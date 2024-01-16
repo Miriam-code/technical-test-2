@@ -14,8 +14,9 @@ Bug 3 : TypeError quand on clique sur un projet , car dans le back-end dans le c
 
 ## Nouvelle Fonctionnalité la Chatroom :
 
-J'ai décidée d'implémenter comme nouvelle fonctionnalité la Chatroom afin de créer des room sur les différents projets pour facilité l'échange sur la plateforme.  
-J'ai utilisée scoket.io que j'ai configuré dans le front et dans le back j'ai créé le model Message afin d'enregistrer les messages dans la base de donnée et d'afficher les anciens messages dans le chat.
+J'ai décidé d'implémenter comme nouvelle fonctionnalité la Chatroom afin de créer des room sur les différents projets pour facilité l'échange sur la plateforme.  
+
+J'ai utilisé scoket.io que j'ai configuré dans le front et dans le back j'ai créé le model Message afin d'enregistrer les messages dans la base de donnée et d'afficher les anciens messages dans le chat. C'est la première fois que j'implémente la bibliothèque socket.io et je suis contente du résultat.
 
 ## Do you have any feedback about the code / architecture of the project and what was the difficulty you encountered while doing it 
 
