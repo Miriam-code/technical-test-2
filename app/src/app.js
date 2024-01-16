@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-d
 import Loader from "./components/loader";
 import { setUser } from "./redux/auth/actions";
 
+import ChatroomRoutes from "./scenes/chatroom/index";
 import Activity from "./scenes/activity";
 import Auth from "./scenes/auth";
 import Project from "./scenes/project";
@@ -54,9 +55,8 @@ const App = () => {
               <Switch>
                 <Route path="/auth" component={Auth} />
                 <RestrictedRoute path="/user" component={User} />
-
+                <Route path="/chatroom" component={ChatroomRoutes} />
                 <RestrictedRoute path="/activity" component={Activity} />
-
                 <RestrictedRoute path="/account" component={Account} />
                 <RestrictedRoute path="/project" component={Project} />
                 <RestrictedRoute path="/" component={Home} />

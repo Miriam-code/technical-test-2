@@ -10,7 +10,9 @@ const Header = () => {
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const dispatch = useDispatch();
+  
   const user = useSelector((state) => state.Auth.user);
+
   async function logout() {
     await api.post(`/user/logout`);
     dispatch(setUser(null));

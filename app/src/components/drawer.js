@@ -15,6 +15,7 @@ const DrawerDesktop = () => {
           <Link to="/project" title="Projects" Icon={ProjectsIcon} />
           <Link to="/activity" title="Activities" Icon={ActivitiesIcon} />
           <Link to="/user" title="People" Icon={PeopleIcon} />
+          <Link to="/chatroom" title="Chatroom" Icon={PeopleIcon} />
         </Section>
 
         <div className="h-10" />

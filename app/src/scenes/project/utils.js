@@ -8,3 +8,4 @@ export function getDaysInMonth(month, year) {
   }
   return days;
 }
+

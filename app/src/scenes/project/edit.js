@@ -9,6 +9,7 @@ import api from "../../services/api";
 import toast from "react-hot-toast";
 
 export default function EditProject() {
+  const [loading, setLoading] = useState(true); // Ajout d'un état de chargement
   const [project, setProject] = useState(null);
   const [bufferOtherLink, setBufferOtherLink] = useState("");
   const [bufferOtherLinkLabel, setBufferOtherLinkLabel] = useState("");
@@ -17,7 +18,9 @@ export default function EditProject() {
   useEffect(() => {
     (async () => {
       const { data: u } = await api.get(`/project/${id}`);
+      console.log('API Response:', u);
       setProject(u);
+      console.log('project',project)
     })();
   }, []);
 
@@ -32,6 +35,7 @@ export default function EditProject() {
   }
 
   if (!project) return <Loader />;
+
   return (
     <div>
       <div className="appContainer pt-24">
@@ -66,7 +70,7 @@ export default function EditProject() {
                   <div className="flex gap-4 flex-wrap">
                     <div className="w-full md:w-[260px] mt-2">
                       <div className="text-[14px] text-[#212325] font-medium	">Name of project</div>
-                      <input className="projectsInput text-[14px] font-normal text-[#212325] rounded-[10px]" name="name" disabled value={values.name} onChange={handleChange} />
+                      <input className="projectsInput text-[14px] font-normal text-[#212325] rounded-[10px]" name="name" value={values.name} onChange={handleChange} />
                     </div>
                     <div className="w-full md:w-[260px] mt-2">
                       <div className="text-[14px] text-[#212325] font-medium	">Lead by name</div>

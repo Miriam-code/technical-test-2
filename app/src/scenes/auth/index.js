@@ -1,15 +1,16 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch , withRouter} from "react-router-dom";
 import Signin from "./signin";
 import Signup from "./signup";
 
-const Auth = () => {
+const Auth = (props) => {
   return (
     <Switch>
       <Route path="/auth/signup" component={Signup} />
-      <Route path="/auth" component={Signin} />
+      <Route path="/auth" render={(routeProps) => <Signin {...routeProps} setupSocket={props.setupSocket} />}
+      />
     </Switch>
   );
 };
 
-export default Auth;
+export default withRouter(Auth);

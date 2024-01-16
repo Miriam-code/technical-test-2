@@ -10,7 +10,7 @@ import { setUser } from "../../redux/auth/actions";
 import LoadingButton from "../../components/loadingButton";
 import api from "../../services/api";
 
-export default () => {
+export default (props) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.Auth.user);
 
@@ -27,6 +27,7 @@ export default () => {
             const { user, token } = await api.post(`/user/signin`, values);
             if (token) api.setToken(token);
             if (user) dispatch(setUser(user));
+            props.setupSocket();
           } catch (e) {
             console.log("e", e);
             toast.error("Wrong login", e.code);

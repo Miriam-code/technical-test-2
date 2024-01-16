@@ -11,6 +11,7 @@ import SelectMonth from "./../../components/selectMonth";
 import { getDaysInMonth } from "./utils";
 
 const Activity = () => {
+
   const [date, setDate] = useState(null);
   const [user, setUser] = useState(null);
   const [project, setProject] = useState("");
@@ -54,14 +55,18 @@ const Activities = ({ date, user, project }) => {
     (async () => {
       const { data } = await api.get(`/activity?date=${date.getTime()}&user=${user.name}&project=${project}`);
       const projects = await api.get(`/project/list`);
-      setActivities(
-        data.map((activity) => {
+      setActivities(data
+        .map((activity) => {
           return { ...activity, projectName: (activity.projectName = projects.data.find((project) => project._id === activity.projectId)?.name) };
+        })
+        .filter((activity) => {
+          if (project === "") return true;
+          return activity.projectName === project;
         }),
-      );
-      setOpen(null);
-    })();
-  }, [date]);
+    );
+    setOpen(null);
+  })();
+}, [date]);
 
   const days = getDaysInMonth(date.getMonth(), date.getFullYear());
   const onAddActivities = (project) => {
@@ -97,7 +102,8 @@ const Activities = ({ date, user, project }) => {
     if (window.confirm("Are you sure ?")) {
       const activity = activities[i];
       await api.remove(`/activity/${activity._id}`);
-      toast.success(`Deleted ${activity.project}`);
+      setActivities(activities.filter((activityItem) => activityItem.projectName !== activity.projectName));
+      toast.success(`Deleted ${activity.projectName}`);
     }
   }
 

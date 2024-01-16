@@ -9,6 +9,7 @@ import ProgressBar from "../../components/ProgressBar";
 
 import api from "../../services/api";
 const ProjectList = () => {
+
   const [projects, setProjects] = useState(null);
   const [activeProjects, setActiveProjects] = useState(null);
 
@@ -16,8 +17,8 @@ const ProjectList = () => {
 
   useEffect(() => {
     (async () => {
-      const { data: u } = await api.get("/project");
-      setProjects(u);
+      const { data } = await api.get("/project");
+      setProjects(data);
     })();
   }, []);
 
@@ -29,6 +30,7 @@ const ProjectList = () => {
   if (!projects || !activeProjects) return <Loader />;
 
   const handleSearch = (searchedValue) => {
+
     const p = (projects || []).filter((p) => p.status === "active").filter((e) => e.name.toLowerCase().includes(searchedValue.toLowerCase()));
     setActiveProjects(p);
   };
@@ -93,7 +95,9 @@ const Budget = ({ project }) => {
 };
 
 const Create = ({ onChangeSearch }) => {
+  
   const [open, setOpen] = useState(false);
+  const history = useHistory();
 
   return (
     <div className="mb-[10px] ">
@@ -146,6 +150,7 @@ const Create = ({ onChangeSearch }) => {
                   if (!res.ok) throw res;
                   toast.success("Created!");
                   setOpen(false);
+                  history.push(`/project/${res.data._id}`);
                 } catch (e) {
                   console.log(e);
                   toast.error("Some Error!", e.code);

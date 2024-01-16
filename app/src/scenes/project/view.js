@@ -16,6 +16,7 @@ import SelectMonth from "./../../components/selectMonth";
 ChartJS.register(...registerables);
 
 export default function ProjectView() {
+
   const [project, setProject] = useState(null);
   const [copied, setCopied] = React.useState(false);
   const { id } = useParams();
@@ -23,8 +24,8 @@ export default function ProjectView() {
 
   useEffect(() => {
     (async () => {
-      const { data: u } = await api.get(`/project/${id}`);
-      setProject(u);
+      const { data } = await api.get(`/project/${id}`);
+      setProject(data);
     })();
   }, []);
 
@@ -60,7 +61,7 @@ export default function ProjectView() {
 }
 
 const ProjectDetails = ({ project }) => {
-  console.log(project);
+  console.log("ProjectDetails props:", project);
   return (
     <div>
       <div className="flex flex-wrap p-3">
@@ -70,7 +71,7 @@ const ProjectDetails = ({ project }) => {
               <div className="flex justify-between gap-2">
                 <div className="flex gap-20">
                   <span className="w-fit text-[20px] text-[#0C1024] font-bold">Nom du projet : </span>
-                  <span className="w-fit text-[20px] text-[#0C1024] font-bold">{project.name.toString()}</span>
+                  <span className="w-fit text-[20px] text-[#0C1024] font-bold">{project.name ? project.name : ""}</span>
                 </div>
                 <div className="flex flex-1 flex-column items-end gap-3">
                   <Links project={project} />
