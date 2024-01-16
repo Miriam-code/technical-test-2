@@ -18,7 +18,7 @@ J'ai décidé d'implémenter comme nouvelle fonctionnalité la Chatroom afin de 
 
 J'ai utilisé scoket.io que j'ai configuré dans le front et dans le back j'ai créé le model Message afin d'enregistrer les messages dans la base de donnée et d'afficher les anciens messages dans le chat. C'est la première fois que j'implémente la bibliothèque socket.io et je suis contente du résultat.
 
-<img src="[lien/de/votre/image.jpg](https://github.com/Miriam-code/technical-test-2/blob/main/chatroomdash.PNG?raw=true)" alt="Texte alternatif">
+<img src="https://github.com/Miriam-code/technical-test-2/blob/main/chatroomdash.PNG?raw=true" alt="Texte alternatif">
 
 ## Do you have any feedback about the code / architecture of the project and what was the difficulty you encountered while doing it 
 
